@@ -1,10 +1,14 @@
 require 'test_helper'
 
 class AudienceMemberTest < ActiveSupport::TestCase
+  subject { FactoryBot.create(:audience_member) }
+
   context 'validations' do
     should validate_presence_of(:name)
     should validate_presence_of(:email)
     should validate_presence_of(:cpf)
+    should validate_uniqueness_of(:cpf).case_insensitive
+    should validate_uniqueness_of(:email)
   end
 
   context 'email regex' do
