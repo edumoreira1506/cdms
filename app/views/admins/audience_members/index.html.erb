@@ -27,7 +27,11 @@
   <tbody>
     <% @audience_members.each do | audience_member | %>
       <tr role="row" class="odd">
-        <td class="sorting_1"><span class="text-muted"><%= audience_member.id %></span></td>
+        <td class="sorting_1">
+          <%= link_to admins_show_audience_member_path(audience_member.id), active: :exclusive do %>
+            <span class="text-muted"><%= audience_member.id %></span>
+          <% end %>
+        </td>
         <td><%= audience_member.name %></td>
         <td><%= audience_member.cpf %></td>
         <td><%= audience_member.email %></td>

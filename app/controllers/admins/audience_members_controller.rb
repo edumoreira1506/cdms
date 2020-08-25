@@ -19,7 +19,7 @@ class Admins::AudienceMembersController < Admins::BaseController
   end
 
   def edit
-    @audience_member = AudienceMember.find(params[:id])
+    set_audience_member
   end
 
   def update
@@ -47,7 +47,15 @@ class Admins::AudienceMembersController < Admins::BaseController
     end
   end
 
+  def show
+    set_audience_member
+  end
+
   private
+
+  def set_audience_member
+    @audience_member = AudienceMember.find(params[:id])
+  end
 
   def audience_member_params
     params.require(:audience_member).permit(:id, :name, :email, :cpf)
